@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:29:23 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/12 18:50:06 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/19 17:34:10 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ char	**get_map(char **av)
 	char 	**map;
 	
 	map_fd = open(av[1], O_RDONLY);
+	if (map_fd == -1)
+		return (NULL);
 	read(map_fd, buffer, 1000);
 	map = ft_split(buffer, '\n');
 	close(map_fd);

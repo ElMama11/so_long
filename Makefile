@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/02/10 14:04:53 by mverger           #+#    #+#              #
-#    Updated: 2022/02/12 16:56:57 by mverger          ###   ########.fr        #
+#    Created: 2022/02/10 14:07:00 by mverger           #+#    #+#              #
+#    Updated: 2022/02/16 16:09:02 by mverger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,38 +18,30 @@ DEFAULT     = \033[37m
 PATHOBJ = obj/
 PATHSRC = src/
 INCLUDE_PATH=include
-DEP = Makefile src/$(INCLUDE_PATH)/so_long.h
-SRC =   main.c \
+DEP = Makefile src/$(INCLUDE_PATH)/so_long.h ./libft/libft.a
+SRC =	main.c \
 		parsing.c
-		
+LIBFT = libft/libft.a
 HEAD = -I ./src/$(INCLUDE_PATH)/ -I libft/
-LIBFT = ./libft/libft.a
 OBJ = $(patsubst %.c,$(PATHOBJ)/%.o,$(SRC))
+ECHO = echo
 
-ifeq ($(shell uname),Darwin)
-    ECHO    = echo
-else
-	ECHO    = echo
-endif
+all: | libft $(NAME)
 
-all: $(NAME)
-
-libft: $(LIBFT)
+libft:
+	@make -C libft/
 
 $(PATHOBJ):
-	@mkdir -p obj
+	@mkdir -p $(PATHOBJ)
 
-$(LIBFT):
-	@make -C ./libft/
-
-$(NAME): $(DEP) $(LIBFT) $(addprefix $(PATHSRC)/,$(SRC)) $(PATHOBJ) $(OBJ)
+$(NAME): $(PATHOBJ) $(addprefix $(PATHSRC)/,$(SRC)) $(OBJ)
 	@$(ECHO) "\r$(GREEN) The .o from $(NAME) are compiled.$(DEFAULT)"
 	@$(GCCF) $(OBJ) $(LIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@$(ECHO) "$(GREEN)$(NAME)$(DEFAULT) created."
 
-$(PATHOBJ)/%.o: $(PATHSRC)/%.c
-	@$(ECHO) "\r$(GREEN) Compiling $@                      \c\033[K"
-	@$(GCCF) -Imlx -c $< -o $@ $(HEAD)
+$(PATHOBJ)/%.o: $(PATHSRC)/%.c $(DEP)
+	@$(ECHO) "\r$(GREEN) Compiling $<                 \c\033[K"
+	@$(GCCF) $(HEAD) -Imlx -c $< -o $@
 
 clean:
 	@$(ECHO) "All $(RED).o$(DEFAULT) are now deleted for $(NAME)."
@@ -63,4 +55,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re libft

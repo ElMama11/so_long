@@ -6,17 +6,17 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:52:22 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/11 16:49:39 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/16 16:08:41 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "include/so_long.h"
 
-// typedef struct s_vars {
-// 	void	*mlx;
-// 	void	*win;
-// 	void	*img;
-// }				t_vars;
+typedef struct s_vars {
+	void	*mlx;
+	void	*win;
+	void	*img;
+}				t_vars;
 
 // int	closee(int keycode, t_vars *vars)
 // {	
@@ -41,23 +41,23 @@
 // 	return (0);
 // }
 
-// int	main(void)
-// {
-// 	t_vars vars;
-// 	char	*relative_path = "assets/textures/re.xpm";
-// 	int		img_width;
-// 	int		img_height;
-// 	int		i, j = 64;
+int	main(void)
+{
+	t_vars vars;
+	char	*relative_path = "assets/textures/re.xpm";
+	int		img_width;
+	int		img_height;
+	int		i, j = 64;
 	
-// 	vars.img = NULL;
-// 	vars.mlx = mlx_init();
-// 	vars.win = mlx_new_window(vars.mlx, 800, 600, "hello");
-// 	vars.img = mlx_xpm_file_to_image(vars.mlx, "assets/textures/re.xpm", &img_width, &img_height);
-// 	//mlx_put_image_to_window(vars.mlx, vars.win, img, 20, 20);
+	vars.img = NULL;
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 800, 600, "hello");
+	vars.img = mlx_xpm_file_to_image(vars.mlx, "assets/textures/re.xpm", &img_width, &img_height);
+	//mlx_put_image_to_window(vars.mlx, vars.win, img, 20, 20);
 		
-// 	//mlx_key_hook(vars.win, key_hook, &vars);
-// 	//mlx_mouse_hook(vars.win, mouse_pos_hook, &vars);
-// 	//mlx_hook(vars.win, 2, 1L<<0, closee, &vars);
-// 	mlx_put_image_to_window(vars.mlx, vars.win, vars.img, 20, 20);
-// 	mlx_loop(vars.mlx);
-// }
+	//mlx_key_hook(vars.win, key_hook, &vars);
+	//mlx_mouse_hook(vars.win, mouse_pos_hook, &vars);
+	//mlx_hook(vars.win, 2, 1L<<0, closee, &vars);
+	mlx_put_image_to_window(vars.mlx, vars.win, vars.img, 20, 20);
+	mlx_loop(vars.mlx);
+}

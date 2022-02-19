@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:44:49 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/12 18:47:53 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/19 17:39:32 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,9 @@ typedef struct s_global {
 	void	*mlx;
 	void	*win;
 	void	*img;
+	int		x;
+	int		y;
+	char	**map;
 }				t_global;
 
 /* parsing.c */
