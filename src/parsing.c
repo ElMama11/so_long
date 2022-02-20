@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:29:23 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/19 17:34:10 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/20 14:36:14 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ char	**get_map(char **av)
 		return (NULL);
 	read(map_fd, buffer, 1000);
 	map = ft_split(buffer, '\n');
+	map[ft_tablen(map) - 1][ft_strlen(map[0])] = '\0';
 	close(map_fd);
 	return (map);
 }

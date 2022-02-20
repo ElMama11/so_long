@@ -6,7 +6,7 @@
 #    By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 14:07:00 by mverger           #+#    #+#              #
-#    Updated: 2022/02/16 16:09:02 by mverger          ###   ########.fr        #
+#    Updated: 2022/02/20 14:01:37 by mverger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,9 @@ PATHSRC = src/
 INCLUDE_PATH=include
 DEP = Makefile src/$(INCLUDE_PATH)/so_long.h ./libft/libft.a
 SRC =	main.c \
-		parsing.c
+		parsing.c \
+		display.c \
+		display_utils.c
 LIBFT = libft/libft.a
 HEAD = -I ./src/$(INCLUDE_PATH)/ -I libft/
 OBJ = $(patsubst %.c,$(PATHOBJ)/%.o,$(SRC))
