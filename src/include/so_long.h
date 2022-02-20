@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:44:49 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/20 14:03:07 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/20 19:12:32 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,24 @@ typedef struct s_global {
 	void	*img;
 	int		x;
 	int		y;
+	int		character_x;
+	int		character_y;
 	char	**map;
 }				t_global;
+
+/* ENUM */
+
+enum {
+	W_PRESS = 13,
+	D_PRESS = 2,
+	S_PRESS = 1,
+	A_PRESS = 0,
+	ESC_PRESS = 53,
+	UP_DIRECTION = 0,
+	DOWN_DIRECTION = 1,
+	LEFT_DIRECTION = 2,
+	RIGHT_DIRECTION = 3
+};
 
 /* main */
 void	init_global(t_global *global, char **av);
@@ -51,5 +67,19 @@ void	display_assets(char **av, t_global *global);
 
 /* display_utils.c */
 void	display_ground(t_global *global);
+void	put_corner(t_global *global, int corner, int img_width, int img_height);
+void	put_wall(t_global *global, int wall, int img_width, int img_height);
+void	put_wallB(t_global *global, int img_width, int img_height);
+
+/* action.c */
+int		move_character(int keycode, t_global *global);
+void	move_up(t_global *global, int img_width, int img_height);
+void	move_right(t_global *global, int img_width, int img_height);
+void	move_down(t_global *global, int img_width, int img_height);
+void	move_left(t_global *global, int img_width, int img_height);
+
+/* pathfinding.c */
+int	*find_into_map(t_global *global, char to_find);
+int 	pathfinding(t_global *global, int direction);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 13:56:32 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/20 14:37:44 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/20 16:36:35 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ void	display_character(t_global *global)
 	mlx_put_image_to_window(global->mlx, global->win, global->img, global->x, global->y);
 	global->img = mlx_xpm_file_to_image(global->mlx, "assets/character/front", &img_width, &img_height);
 	mlx_put_image_to_window(global->mlx, global->win, global->img, global->x, global->y);
+	global->character_x = global->x;
+	global->character_y = global->y;
 	global->x = global->x + 50;
 }
 
@@ -50,59 +52,23 @@ void	display_wall(t_global *global, int i, int j)
 	int	img_height;
 
 	if (i == 0 && j == 0)
-	{
-		global->img = mlx_xpm_file_to_image(global->mlx, "assets/textures/cornerLT", &img_width, &img_height);
-		mlx_put_image_to_window(global->mlx, global->win, global->img, global->x, global->y);
-		global->x = global->x + 50;
-	}
+		put_corner(global, 1, img_width, img_height);
 	else if (i == 0 && j > 0 && j < ft_strlen(global->map[i]) - 1)
-	{
-		global->img = mlx_xpm_file_to_image(global->mlx, "assets/textures/wallT", &img_width, &img_height);
-		mlx_put_image_to_window(global->mlx, global->win, global->img, global->x, global->y);
-		global->x = global->x + 50;
-	}
+		put_wall(global, 1, img_width, img_height);
 	else if (i == 0 && j == ft_strlen(global->map[i]) - 1)
-	{
-		global->img = mlx_xpm_file_to_image(global->mlx, "assets/textures/cornerRT", &img_width, &img_height);
-		mlx_put_image_to_window(global->mlx, global->win, global->img, global->x, global->y);
-		global->x = global->x + 50;
-	}
+		put_corner(global, 2, img_width, img_height);
 	else if (i > 0 && i < ft_tablen(global->map) - 1 && j == 0)
-	{
-		global->img = mlx_xpm_file_to_image(global->mlx, "assets/textures/wallL", &img_width, &img_height);
-		mlx_put_image_to_window(global->mlx, global->win, global->img, global->x, global->y);
-		global->x = global->x + 50;
-	}
+		put_wall(global, 2, img_width, img_height);
 	else if (i > 0 && i < ft_tablen(global->map) - 1 && j > 0 && j < ft_strlen(global->map[i]) - 1)
-	{
-		global->img = mlx_xpm_file_to_image(global->mlx, "assets/textures/wall", &img_width, &img_height);
-		mlx_put_image_to_window(global->mlx, global->win, global->img, global->x, global->y);
-		global->x = global->x + 50;
-	}
+		put_wall(global, 3, img_width, img_height);
 	else if (i > 0 && i < ft_tablen(global->map) - 1  && j == ft_strlen(global->map[i]) - 1)
-	{
-		global->img = mlx_xpm_file_to_image(global->mlx, "assets/textures/wallR", &img_width, &img_height);
-		mlx_put_image_to_window(global->mlx, global->win, global->img, global->x, global->y);
-		global->x = global->x + 50;
-	}
+		put_wall(global, 4, img_width, img_height);
 	else if (i == ft_tablen(global->map) - 1 && j == 0)
-	{
-		global->img = mlx_xpm_file_to_image(global->mlx, "assets/textures/cornerLB", &img_width, &img_height);
-		mlx_put_image_to_window(global->mlx, global->win, global->img, global->x, global->y);
-		global->x = global->x + 50;
-	}
+		put_corner(global, 3, img_width, img_height);
 	else if (i == ft_tablen(global->map) - 1 && j > 0 && j < ft_strlen(global->map[i]) - 1)
-	{
-		global->img = mlx_xpm_file_to_image(global->mlx, "assets/textures/wallB", &img_width, &img_height);
-		mlx_put_image_to_window(global->mlx, global->win, global->img, global->x, global->y);
-		global->x = global->x + 50;
-	}
+		put_wallB(global, img_width, img_height);
 	else if (i == ft_tablen(global->map) - 1 && j == ft_strlen(global->map[i]) - 1)
-	{
-		global->img = mlx_xpm_file_to_image(global->mlx, "assets/textures/cornerRB", &img_width, &img_height);
-		mlx_put_image_to_window(global->mlx, global->win, global->img, global->x, global->y);
-		global->x = global->x + 50;
-	}
+		put_corner(global, 4, img_width, img_height);
 }
 
 void	display_assets(char **av, t_global *global)
@@ -112,7 +78,6 @@ void	display_assets(char **av, t_global *global)
 
 	i = 0;
 	init_global(global, av);
-	//printf("%zu %d", ft_strlen(global->map[5]), ft_tablen(global->map));
 	while (global->map[i])
 	{
 		j = 0;
