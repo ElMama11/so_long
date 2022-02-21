@@ -6,11 +6,11 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:59:54 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/20 19:32:38 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/21 19:05:08 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include/so_long.h"
+#include "so_long.h"
 
 void	init_global(t_global *global, char **av)
 {
@@ -21,16 +21,18 @@ void	init_global(t_global *global, char **av)
 	global->y = 0;
 	global->character_x = 0;
 	global->character_y = 0;
+	global->total_chest = 0;
+	global->chest_picked = 0;
 	global->map = get_map(av);
+	count_chest(global);
 }
 
 void	key_press(t_global *global)
-{
+{	
 	mlx_key_hook(global->win, move_character, global);
-	
 }
 
-int	main(int ac, char **av) //read change la map
+int	main(int ac, char **av) //read change la map, free global.map
 {
 	t_global global;
 	if (ac != 2)
@@ -44,11 +46,6 @@ int	main(int ac, char **av) //read change la map
 		return (0);
 	}
 	display_assets(av, &global);
-	//key_press(&global);
-
-	int	*pos_tofind;
-	pos_tofind = find_into_map(&global, 'P');
-	printf("%d et %d", pos_tofind[0], pos_tofind[1]);
-	
-	//mlx_loop(global.mlx);
+	key_press(&global);
+	mlx_loop(global.mlx);
 }

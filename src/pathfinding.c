@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 19:08:41 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/20 19:37:54 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/21 20:30:15 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ int	*find_into_map(t_global *global, char to_find)
 	int	i;
 	int	j;
 
-	pos_tofind = (int *)malloc(sizeof(int) * 2);
-					pos_tofind[0] = 1;
-				pos_tofind[1] = 1;
+	pos_tofind = (int *)ft_memallocexit(sizeof(int) * 2);
 	i = 0;
 	while (global->map[i])
 	{
@@ -31,69 +29,44 @@ int	*find_into_map(t_global *global, char to_find)
 			{
 				pos_tofind[0] = i;
 				pos_tofind[1] = j;
-				return (pos_tofind);
-				//break;
+				break;
 			}
 			j++;
 		}
 		i++;
 	}
-						//pos_tofind[0] = i;
-				//pos_tofind[1] = j;
 	return (pos_tofind);
 }
 
-int 	pathfinding(t_global *global, int direction) //free tab
+int	pathfinding(t_global *global, int direction)
 {
-	int	*pos_tofind;
-	int	i;
-	int	j;
-	
-	pos_tofind = find_into_map(global, 'P');
-	i = pos_tofind[0];
-	j = pos_tofind[1];
-	if (direction == UP_DIRECTION)
+	if (direction == W_PRESS)
 	{
-		if (global->map[i - 1][j] == '1')
-			return (0);
-		else
-		{
-			global->map[i][j] = '0';
-			global->map[i - 1][j] = 'P';
+		if (pathfinding_top(global) == 1)
 			return (1);
-		}
+		//else if (pathfinding_top(global) == 2)
+		//close
 	}
-	else if (direction == DOWN_DIRECTION)
+	else if (direction == S_PRESS)
 	{
-		if (global->map[i + 1][j] == '1')
-			return (0);
-		else
-		{
-			global->map[i][j] = '0';
-			global->map[i + 1][j] = 'P';
+		if (pathfinding_down(global) == 1)
 			return (1);
-		}
+	//	else if (pathfinding_top(global) == 2)
+		//close
 	}
-	else if (direction == LEFT_DIRECTION)
+	else if (direction == A_PRESS)
 	{
-		if (global->map[i][j - 1] == '1')
-			return (0);
-		else
-		{
-			global->map[i][j] = '0';
-			global->map[i][j - 1] = 'P';
+		if (pathfinding_left(global) == 1)
 			return (1);
-		}
+		//else if (pathfinding_top(global) == 2)
+		//close
 	}
-	else if (direction == RIGHT_DIRECTION)
+	else if (direction == D_PRESS)
 	{
-		if (global->map[i][j + 1] == '1')
-			return (0);
-		else
-		{
-			global->map[i][j] = '0';
-			global->map[i][j + 1] = 'P';
+		if (pathfinding_right(global) == 1)
 			return (1);
-		}
+		//else if (pathfinding_top(global) == 2)
+		//close
 	}
+	return (0);
 }

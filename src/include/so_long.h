@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:44:49 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/20 19:12:32 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/21 20:05:10 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ typedef struct s_global {
 	int		y;
 	int		character_x;
 	int		character_y;
+	int		total_chest;
+	int		chest_picked;
 	char	**map;
 }				t_global;
 
@@ -42,14 +44,13 @@ enum {
 	S_PRESS = 1,
 	A_PRESS = 0,
 	ESC_PRESS = 53,
-	UP_DIRECTION = 0,
-	DOWN_DIRECTION = 1,
-	LEFT_DIRECTION = 2,
-	RIGHT_DIRECTION = 3
 };
 
 /* main */
 void	init_global(t_global *global, char **av);
+
+/* general_utils.c */
+void	count_chest(t_global *global);
 
 /* parsing.c */
 int		check_wall(char **map);
@@ -79,7 +80,18 @@ void	move_down(t_global *global, int img_width, int img_height);
 void	move_left(t_global *global, int img_width, int img_height);
 
 /* pathfinding.c */
-int	*find_into_map(t_global *global, char to_find);
+int		*find_into_map(t_global *global, char to_find);
 int 	pathfinding(t_global *global, int direction);
 
+/* pathfinding_utils.c */
+int	pathfinding_top(t_global *global);
+int	pathfinding_down(t_global *global);
+int	pathfinding_left(t_global *global);
+int	pathfinding_right(t_global *global);
+
+/* pathfinding_exit.c */
+int	pathfinding_exitt(t_global *global, int i, int j);
+int	pathfinding_exitr (t_global *global, int i, int j);
+int	pathfinding_exitd(t_global *global, int i, int j);
+int	pathfinding_exitl(t_global *global, int i, int j);
 #endif

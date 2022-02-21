@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 13:56:32 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/20 16:36:35 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/21 19:02:15 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,5 @@ void	display_assets(char **av, t_global *global)
 		global->x = 0;
 		i++;
 	}
-	ft_free_tab(global->map);
+	
 }

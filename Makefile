@@ -6,7 +6,7 @@
 #    By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 14:07:00 by mverger           #+#    #+#              #
-#    Updated: 2022/02/20 19:09:24 by mverger          ###   ########.fr        #
+#    Updated: 2022/02/21 20:07:38 by mverger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,10 @@ SRC =	main.c \
 		display.c \
 		display_utils.c \
 		action.c \
-		pathfinding.c
+		pathfinding.c \
+		pathfinding_utils.c \
+		general_utils.c \
+		pathfinding_exit.c
 LIBFT = libft/libft.a
 HEAD = -I ./src/$(INCLUDE_PATH)/ -I libft/
 OBJ = $(patsubst %.c,$(PATHOBJ)/%.o,$(SRC))
