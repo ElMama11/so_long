@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:28:48 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/21 20:29:59 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/22 14:27:02 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int	pathfinding_top(t_global *global)
 	{
 		if (global->map[i - 1][j] == 'C')
 			global->chest_picked = global->chest_picked + 1;
-		global->map[i][j] = '0';
-		global->map[i - 1][j] = 'P';
 		if (pathfinding_exitt(global, i, j) == 1)
 			return (2);
+		global->map[i][j] = '0';
+		global->map[i - 1][j] = 'P';
 		return (1);
 	}
 	free(pos_tofind);
@@ -51,10 +51,10 @@ int	pathfinding_down(t_global *global)
 	{
 		if (global->map[i + 1][j] == 'C')
 			global->chest_picked = global->chest_picked + 1;
-		global->map[i][j] = '0';
-		global->map[i + 1][j] = 'P';
 		if (pathfinding_exitd(global, i, j) == 1)
 			return (2);
+		global->map[i][j] = '0';
+		global->map[i + 1][j] = 'P';
 		return (1);
 	}
 	free(pos_tofind);
@@ -75,10 +75,10 @@ int	pathfinding_left(t_global *global)
 	{
 		if (global->map[i][j - 1] == 'C')
 			global->chest_picked = global->chest_picked + 1;
-		global->map[i][j] = '0';
-		global->map[i][j - 1] = 'P';
 		if (pathfinding_exitl(global, i, j) == 1)
 			return (2);
+		global->map[i][j] = '0';
+		global->map[i][j - 1] = 'P';
 		return (1);
 	}
 	free(pos_tofind);
@@ -99,11 +99,11 @@ int	pathfinding_right(t_global *global)
 	{
 		if (global->map[i][j + 1] == 'C')
 			global->chest_picked = global->chest_picked + 1;
-		global->map[i][j] = '0';
-		global->map[i][j + 1] = 'P';
 		if (pathfinding_exitr(global, i, j) == 1)
 			return (2);
+		global->map[i][j] = '0';
+		global->map[i][j + 1] = 'P';
 		return (1);
 	}
 	free(pos_tofind);
-} // si a +1 j'ai une sortie, je dois check que j'ai les chest, si j'ai tous les chest je return 2
+}

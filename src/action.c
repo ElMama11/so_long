@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 15:51:12 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/21 19:50:01 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/22 14:44:13 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ int	move_character(int keycode, t_global *global)
 	
 	if (keycode == W_PRESS && pathfinding(global, W_PRESS) == 1)
 		move_up(global, img_width, img_width);
-		//si pathfinding return 2, je close
 	else if (keycode == D_PRESS && pathfinding(global, D_PRESS) == 1)
 		move_right(global, img_width, img_width);
 	else if (keycode == S_PRESS && pathfinding(global, S_PRESS) == 1)
 		move_down(global, img_width, img_width);
 	else if (keycode == A_PRESS && pathfinding(global, A_PRESS) == 1)
 		move_left(global, img_width, img_width);
+	else if (keycode == ESC_PRESS)
+		free_and_close(global);
 	return (0);
 }

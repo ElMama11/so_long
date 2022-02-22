@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:44:49 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/21 20:05:10 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/22 15:28:40 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct s_global {
 	int		character_y;
 	int		total_chest;
 	int		chest_picked;
+	int		move_count;
 	char	**map;
 }				t_global;
 
@@ -51,6 +52,7 @@ void	init_global(t_global *global, char **av);
 
 /* general_utils.c */
 void	count_chest(t_global *global);
+void	free_and_close(t_global *global);
 
 /* parsing.c */
 int		check_wall(char **map);

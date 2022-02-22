@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:44:14 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/21 18:54:26 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/22 14:35:19 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,11 @@ void	count_chest(t_global *global)
 		}
 		i++;
 	}
+}
+
+void	free_and_close(t_global *global)
+{
+	free(global->map);
+	mlx_destroy_window(global->mlx, global->win);
+	exit(0);
 }

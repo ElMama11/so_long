@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:59:54 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/21 19:05:08 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/22 14:40:19 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	init_global(t_global *global, char **av)
 	global->character_y = 0;
 	global->total_chest = 0;
 	global->chest_picked = 0;
+	global->move_count = 0;
 	global->map = get_map(av);
 	count_chest(global);
 }

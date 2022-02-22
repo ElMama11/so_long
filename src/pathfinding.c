@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 19:08:41 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/21 20:30:15 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/22 14:38:41 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,29 +44,29 @@ int	pathfinding(t_global *global, int direction)
 	{
 		if (pathfinding_top(global) == 1)
 			return (1);
-		//else if (pathfinding_top(global) == 2)
-		//close
+		else if (pathfinding_top(global) == 2)
+			free_and_close(global);
 	}
 	else if (direction == S_PRESS)
 	{
 		if (pathfinding_down(global) == 1)
 			return (1);
-	//	else if (pathfinding_top(global) == 2)
-		//close
+		else if (pathfinding_down(global) == 2)
+			free_and_close(global);
 	}
 	else if (direction == A_PRESS)
 	{
 		if (pathfinding_left(global) == 1)
 			return (1);
-		//else if (pathfinding_top(global) == 2)
-		//close
+		else if (pathfinding_left(global) == 2)
+			free_and_close(global);
 	}
 	else if (direction == D_PRESS)
 	{
 		if (pathfinding_right(global) == 1)
 			return (1);
-		//else if (pathfinding_top(global) == 2)
-		//close
+		else if (pathfinding_right(global) == 2)
+			free_and_close(global);
 	}
 	return (0);
 }
