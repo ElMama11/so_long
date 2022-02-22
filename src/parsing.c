@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:29:23 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/20 14:36:14 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/22 19:55:16 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,9 @@ int	check_wall(char **map)
 		{
 			if ((i == 0 || i == nb_line_map) && map[i][j] != '1')
 				return (1);
-			if ((i != 0 || i != nb_line_map) && (j == 0 || j == lenght_line) && map[i][j] != '1')
-			{
+			if ((i != 0 || i != nb_line_map)
+				&& (j == 0 || j == lenght_line) && map[i][j] != '1')
 				return (1);
-			}
 			j++;
 		}
 		i++;
@@ -44,8 +43,8 @@ char	**get_map(char **av)
 {
 	int		map_fd;
 	char	buffer[1000];
-	char 	**map;
-	
+	char	**map;
+
 	map_fd = open(av[1], O_RDONLY);
 	if (map_fd == -1)
 		return (NULL);
@@ -58,13 +57,11 @@ char	**get_map(char **av)
 
 int	check_item_exit_start(char **map)
 {
-	int	nb_line_map;
 	int	i;
 	int	j;
 	int	item_exit_start[3];
-	
+
 	i = 1;
-	nb_line_map = ft_tablen(map) - 1;
 	while (map[i])
 	{
 		j = 0;
@@ -76,22 +73,21 @@ int	check_item_exit_start(char **map)
 				item_exit_start[1] = 1;
 			if (map[i][j] == 'P')
 				item_exit_start[2] = 1;
-			
 			j++;
 		}
 		i++;
 	}
-	if (item_exit_start[0] == 1 && item_exit_start[1] == 1 && item_exit_start[2] == 1)
+	if (item_exit_start[0] == 1 && item_exit_start[1] == 1
+		&& item_exit_start[2] == 1)
 		return (0);
-	else
-		return (1);
+	return (1);
 }
 
 int	check_map_shape(char **map)
 {
 	int	nb_line_map;
 	int	i;
-	
+
 	i = 1;
 	nb_line_map = ft_tablen(map);
 	if (nb_line_map < 3)
@@ -108,7 +104,7 @@ int	check_map_shape(char **map)
 int	check_map(char **av)
 {
 	char	**map;
-	int		i; 
+	int		i;
 
 	i = 0;
 	map = get_map(av);

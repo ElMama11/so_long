@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:44:49 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/22 15:28:40 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/22 19:39:08 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,40 @@
 
 /* STRUCTS */
 
-typedef struct s_global {
-	void	*mlx;
-	void	*win;
+typedef struct s_img {
 	void	*img;
-	int		x;
-	int		y;
-	int		character_x;
-	int		character_y;
-	int		total_chest;
-	int		chest_picked;
-	int		move_count;
-	char	**map;
+	int		img_height;
+	int		img_width;
+}				t_img;
+
+typedef struct s_img_list {
+	t_img	chest;
+	t_img	cornerlb;
+	t_img	cornerlt;
+	t_img	cornerrb;
+	t_img	cornerrt;
+	t_img	exit;
+	t_img	ground;
+	t_img	wall;
+	t_img	wallb;
+	t_img	walll;
+	t_img	wallr;
+	t_img	wallt;
+	t_img	character_front;
+}				t_img_list;
+
+typedef struct s_global {
+	void		*mlx;
+	void		*win;
+	t_img_list	img_list;
+	int			x;
+	int			y;
+	int			character_x;
+	int			character_y;
+	int			total_chest;
+	int			chest_picked;
+	int			move_count;
+	char		**map;
 }				t_global;
 
 /* ENUM */
@@ -47,8 +69,10 @@ enum {
 	ESC_PRESS = 53,
 };
 
-/* main */
+/* init_structs.c */
 void	init_global(t_global *global, char **av);
+void	init_img(t_global *global);
+void	init_img_pt2(t_global *global);
 
 /* general_utils.c */
 void	count_chest(t_global *global);
@@ -70,30 +94,30 @@ void	display_assets(char **av, t_global *global);
 
 /* display_utils.c */
 void	display_ground(t_global *global);
-void	put_corner(t_global *global, int corner, int img_width, int img_height);
-void	put_wall(t_global *global, int wall, int img_width, int img_height);
-void	put_wallB(t_global *global, int img_width, int img_height);
+void	put_corner(t_global *global, int corner);
+void	put_wall(t_global *global, int wall);
+void	put_wallb(t_global *global);
 
 /* action.c */
 int		move_character(int keycode, t_global *global);
-void	move_up(t_global *global, int img_width, int img_height);
-void	move_right(t_global *global, int img_width, int img_height);
-void	move_down(t_global *global, int img_width, int img_height);
-void	move_left(t_global *global, int img_width, int img_height);
+void	move_up(t_global *global);
+void	move_right(t_global *global);
+void	move_down(t_global *global);
+void	move_left(t_global *global);
 
 /* pathfinding.c */
 int		*find_into_map(t_global *global, char to_find);
-int 	pathfinding(t_global *global, int direction);
+int		pathfinding(t_global *global, int direction);
 
 /* pathfinding_utils.c */
-int	pathfinding_top(t_global *global);
-int	pathfinding_down(t_global *global);
-int	pathfinding_left(t_global *global);
-int	pathfinding_right(t_global *global);
+int		pathfinding_top(t_global *global);
+int		pathfinding_down(t_global *global);
+int		pathfinding_left(t_global *global);
+int		pathfinding_right(t_global *global);
 
 /* pathfinding_exit.c */
-int	pathfinding_exitt(t_global *global, int i, int j);
-int	pathfinding_exitr (t_global *global, int i, int j);
-int	pathfinding_exitd(t_global *global, int i, int j);
-int	pathfinding_exitl(t_global *global, int i, int j);
+int		pathfinding_exitt(t_global *global, int i, int j);
+int		pathfinding_exitr(t_global *global, int i, int j);
+int		pathfinding_exitd(t_global *global, int i, int j);
+int		pathfinding_exitl(t_global *global, int i, int j);
 #endif

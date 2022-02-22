@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:44:14 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/22 14:35:19 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/22 19:38:30 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,8 @@ void	count_chest(t_global *global)
 {
 	int	i;
 	int	j;
-	
-	i = 0;
 
+	i = 0;
 	while (global->map[i])
 	{
 		j = 0;

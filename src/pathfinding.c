@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 19:08:41 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/22 14:38:41 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/22 20:10:20 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,32 @@ int	*find_into_map(t_global *global, char to_find)
 			{
 				pos_tofind[0] = i;
 				pos_tofind[1] = j;
-				break;
+				break ;
 			}
 			j++;
 		}
 		i++;
 	}
 	return (pos_tofind);
+}
+
+int	pathfinding_pt2(t_global *global, int direction)
+{
+	if (direction == A_PRESS)
+	{
+		if (pathfinding_left(global) == 1)
+			return (1);
+		else if (pathfinding_left(global) == 2)
+			free_and_close(global);
+	}
+	else if (direction == D_PRESS)
+	{
+		if (pathfinding_right(global) == 1)
+			return (1);
+		else if (pathfinding_right(global) == 2)
+			free_and_close(global);
+	}
+	return (0);
 }
 
 int	pathfinding(t_global *global, int direction)
@@ -54,19 +73,7 @@ int	pathfinding(t_global *global, int direction)
 		else if (pathfinding_down(global) == 2)
 			free_and_close(global);
 	}
-	else if (direction == A_PRESS)
-	{
-		if (pathfinding_left(global) == 1)
-			return (1);
-		else if (pathfinding_left(global) == 2)
-			free_and_close(global);
-	}
-	else if (direction == D_PRESS)
-	{
-		if (pathfinding_right(global) == 1)
-			return (1);
-		else if (pathfinding_right(global) == 2)
-			free_and_close(global);
-	}
+	else if (pathfinding_pt2(global, direction) == 1)
+		return (1);
 	return (0);
 }

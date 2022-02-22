@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:28:48 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/22 14:27:02 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/22 19:22:19 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	pathfinding_top(t_global *global)
 	pos_tofind = find_into_map(global, 'P');
 	i = pos_tofind[0];
 	j = pos_tofind[1];
-	if (global->map[i - 1][j] == '1' || (global->map[i - 1][j] == 'E' && global->chest_picked != global->total_chest))
+	if (global->map[i - 1][j] == '1' || (global->map[i - 1][j] == 'E'
+	&& global->chest_picked != global->total_chest))
 		return (0);
 	else
 	{
@@ -45,7 +46,8 @@ int	pathfinding_down(t_global *global)
 	pos_tofind = find_into_map(global, 'P');
 	i = pos_tofind[0];
 	j = pos_tofind[1];
-	if (global->map[i + 1][j] == '1' || (global->map[i + 1][j] == 'E' && global->chest_picked != global->total_chest))
+	if (global->map[i + 1][j] == '1' || (global->map[i + 1][j] == 'E'
+	&& global->chest_picked != global->total_chest))
 		return (0);
 	else
 	{
@@ -69,7 +71,8 @@ int	pathfinding_left(t_global *global)
 	pos_tofind = find_into_map(global, 'P');
 	i = pos_tofind[0];
 	j = pos_tofind[1];
-	if (global->map[i][j - 1] == '1' || (global->map[i][j - 1] == 'E' && global->chest_picked != global->total_chest))
+	if (global->map[i][j - 1] == '1' || (global->map[i][j - 1] == 'E'
+	&& global->chest_picked != global->total_chest))
 		return (0);
 	else
 	{
@@ -93,7 +96,8 @@ int	pathfinding_right(t_global *global)
 	pos_tofind = find_into_map(global, 'P');
 	i = pos_tofind[0];
 	j = pos_tofind[1];
-	if (global->map[i][j + 1] == '1' || (global->map[i][j + 1] == 'E' && global->chest_picked != global->total_chest))
+	if (global->map[i][j + 1] == '1' || (global->map[i][j + 1] == 'E'
+	&& global->chest_picked != global->total_chest))
 		return (0);
 	else
 	{
