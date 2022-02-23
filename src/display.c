@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 13:56:32 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/22 20:05:32 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/23 16:43:31 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	display_character(t_global *global)
 	global->x = global->x + 50;
 }
 
-void	display_wall(t_global *global, int i, int j)
+void	display_wall(t_global *global, size_t i, size_t j)
 {
 	if (i == 0 && j == 0)
 		put_corner(global, 1);
@@ -63,10 +63,10 @@ void	display_wall(t_global *global, int i, int j)
 		put_corner(global, 4);
 }
 
-void	display_assets(char **av, t_global *global)
+void	display_assets(t_global *global)
 {
-	int		i;
-	int		j;
+	size_t		i;
+	size_t		j;
 
 	i = 0;
 	while (global->map[i])

@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:36:01 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/22 20:01:29 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/23 17:17:06 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <fcntl.h>
+# include <stdarg.h>
 
 typedef struct s_list
 {
@@ -69,9 +70,21 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
+/* ft_printf */
+
+int		ft_putnbrr(int n);
+int		ft_putcharr(int c);
+int		ft_putstr(char *s);
+int		ft_unsigned_putnbr(unsigned int n);
+int		ft_convert_low_hexa(unsigned int n);
+int		ft_convert_upper_hexa(unsigned int n);
+int		ft_convert_ptr(unsigned long n);
+int		ft_printf(const char *format, ...);
+int		check_type(char c, int counter, va_list args);
+
 /* Custom funcs */
 
-int		ft_tablen(char **tab);
+size_t	ft_tablen(char **tab);
 void	ft_free_tab(char **tab);
 void	*ft_memallocexit(size_t size);
 long	ft_atol(const char *str);

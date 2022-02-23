@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tablen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mverger <mverger@42lyon.fr>                +#+  +:+       +#+        */
+/*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 19:49:54 by mverger           #+#    #+#             */
-/*   Updated: 2022/01/11 19:50:03 by mverger          ###   ########lyon.fr   */
+/*   Updated: 2022/02/23 16:42:52 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_tablen(char **tab)
+size_t	ft_tablen(char **tab)
 {
-	int i;
+	size_t	i;
 
 	i = 0;
 	while (tab[i])

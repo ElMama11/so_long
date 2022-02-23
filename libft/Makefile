@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jjaouen <jjaouen@student.42.fr>            +#+  +:+       +#+         #
+#    By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/09 14:44:01 by mverger           #+#    #+#              #
-#    Updated: 2022/01/09 03:11:009 by jjaouen          ###   ########.fr        #
+#    Created: 2022/02/10 15:10:45 by mverger           #+#    #+#              #
+#    Updated: 2022/02/23 16:00:04 by mverger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRC=ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c \
 	ft_lstdelone.c ft_lstiter.c ft_lstlast.c \
 	ft_lstmap.c ft_lstnew.c ft_lstsize.c \
 	ft_tablen.c ft_free_tab.c ft_memallocexit.c ft_atol.c \
-	ft_lstsecondlast.c
+	ft_lstsecondlast.c ft_printf.c ft_printf_utils.c
 OBJ= $(SRC:.c=.o)
 
 %.o: %.c $(HEADER)

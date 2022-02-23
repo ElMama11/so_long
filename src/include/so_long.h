@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:44:49 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/22 19:39:08 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/23 17:02:32 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ typedef struct s_global {
 	int			total_chest;
 	int			chest_picked;
 	int			move_count;
+	int			win_height;
+	int			win_width;
 	char		**map;
 }				t_global;
 
@@ -73,10 +75,11 @@ enum {
 void	init_global(t_global *global, char **av);
 void	init_img(t_global *global);
 void	init_img_pt2(t_global *global);
+void	init_window(t_global *global);
 
 /* general_utils.c */
 void	count_chest(t_global *global);
-void	free_and_close(t_global *global);
+int		free_and_close(t_global *global);
 
 /* parsing.c */
 int		check_wall(char **map);
@@ -89,8 +92,8 @@ int		check_map_shape(char **map);
 void	display_chest(t_global *global);
 void	display_exit(t_global *global);
 void	display_character(t_global *global);
-void	display_wall(t_global *global, int i, int j);
-void	display_assets(char **av, t_global *global);
+void	display_wall(t_global *global, size_t i, size_t j);
+void	display_assets(t_global *global);
 
 /* display_utils.c */
 void	display_ground(t_global *global);

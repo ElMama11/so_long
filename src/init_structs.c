@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/22 15:34:57 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/22 19:37:19 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/23 17:18:48 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,19 @@ void	init_img(t_global *global)
 	init_img_pt2(global);
 }
 
+void	init_window(t_global *global)
+{
+	global->win_width = ft_strlen(global->map[0]) * 50;
+	global->win_height = ft_tablen(global->map) * 50;
+	global->win = mlx_new_window(global->mlx, global->win_width,
+			global->win_height, "so_long");
+}
+
 void	init_global(t_global *global, char **av)
 {
 	global->mlx = mlx_init();
-	global->win = mlx_new_window(global->mlx, 1920, 1080, "so_long");
+	global->map = get_map(av);
+	init_window(global);
 	global->x = 0;
 	global->y = 0;
 	global->character_x = 0;
@@ -72,7 +81,6 @@ void	init_global(t_global *global, char **av)
 	global->total_chest = 0;
 	global->chest_picked = 0;
 	global->move_count = 0;
-	global->map = get_map(av);
 	count_chest(global);
 	init_img(global);
 }

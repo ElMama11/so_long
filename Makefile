@@ -6,12 +6,12 @@
 #    By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 14:07:00 by mverger           #+#    #+#              #
-#    Updated: 2022/02/22 20:05:36 by mverger          ###   ########.fr        #
+#    Updated: 2022/02/23 16:38:06 by mverger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-GCCF = gcc -g #-Wall -Werror -Wextra
+GCCF = gcc -g -Wall -Werror -Wextra
 GREEN       = \033[32m
 RED         = \033[31m
 DEFAULT     = \033[37m
