@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/21 18:28:48 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/22 19:22:19 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/26 13:46:44 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	pathfinding_top(t_global *global)
 	pos_tofind = find_into_map(global, 'P');
 	i = pos_tofind[0];
 	j = pos_tofind[1];
+	free(pos_tofind);
 	if (global->map[i - 1][j] == '1' || (global->map[i - 1][j] == 'E'
 	&& global->chest_picked != global->total_chest))
 		return (0);
@@ -34,7 +35,6 @@ int	pathfinding_top(t_global *global)
 		global->map[i - 1][j] = 'P';
 		return (1);
 	}
-	free(pos_tofind);
 }
 
 int	pathfinding_down(t_global *global)
@@ -46,6 +46,7 @@ int	pathfinding_down(t_global *global)
 	pos_tofind = find_into_map(global, 'P');
 	i = pos_tofind[0];
 	j = pos_tofind[1];
+	free(pos_tofind);
 	if (global->map[i + 1][j] == '1' || (global->map[i + 1][j] == 'E'
 	&& global->chest_picked != global->total_chest))
 		return (0);
@@ -59,7 +60,6 @@ int	pathfinding_down(t_global *global)
 		global->map[i + 1][j] = 'P';
 		return (1);
 	}
-	free(pos_tofind);
 }
 
 int	pathfinding_left(t_global *global)
@@ -71,6 +71,7 @@ int	pathfinding_left(t_global *global)
 	pos_tofind = find_into_map(global, 'P');
 	i = pos_tofind[0];
 	j = pos_tofind[1];
+	free(pos_tofind);
 	if (global->map[i][j - 1] == '1' || (global->map[i][j - 1] == 'E'
 	&& global->chest_picked != global->total_chest))
 		return (0);
@@ -84,7 +85,6 @@ int	pathfinding_left(t_global *global)
 		global->map[i][j - 1] = 'P';
 		return (1);
 	}
-	free(pos_tofind);
 }
 
 int	pathfinding_right(t_global *global)
@@ -96,6 +96,7 @@ int	pathfinding_right(t_global *global)
 	pos_tofind = find_into_map(global, 'P');
 	i = pos_tofind[0];
 	j = pos_tofind[1];
+	free(pos_tofind);
 	if (global->map[i][j + 1] == '1' || (global->map[i][j + 1] == 'E'
 	&& global->chest_picked != global->total_chest))
 		return (0);
@@ -109,5 +110,4 @@ int	pathfinding_right(t_global *global)
 		global->map[i][j + 1] = 'P';
 		return (1);
 	}
-	free(pos_tofind);
 }
