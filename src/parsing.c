@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:29:23 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/26 15:08:05 by mverger          ###   ########.fr       */
+/*   Updated: 2022/03/21 23:59:41 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	check_wall(char **map)
 char	**get_map(char **av)
 {
 	int		map_fd;
-	char	buffer[1000];
+	char	buffer[5000];
 	char	**map;
 
 	map_fd = open(av[1], O_RDONLY);
