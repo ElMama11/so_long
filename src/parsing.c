@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:29:23 by mverger           #+#    #+#             */
-/*   Updated: 2022/03/21 23:59:41 by mverger          ###   ########.fr       */
+/*   Updated: 2022/03/22 00:02:41 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**get_map(char **av)
 	map_fd = open(av[1], O_RDONLY);
 	if (map_fd == -1 || ft_strstr(av[1], ".ber") != 1)
 	{
-		write(2, "Error\nBad entry format\n", 23);
+		write(2, "Error : bad path or entry format\n", 23);
 		exit(0);
 	}
 	read(map_fd, buffer, 1000);
