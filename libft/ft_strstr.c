@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/11 15:59:54 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/26 14:35:19 by mverger          ###   ########.fr       */
+/*   Created: 2022/02/26 15:07:31 by mverger           #+#    #+#             */
+/*   Updated: 2022/02/26 15:08:20 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	main(int ac, char **av)
+int	ft_strstr(char *str, char *to_find)
 {
-	t_global	global;
+	int	i;
+	int	j;
 
-	if (ac != 2)
-	{
-		write(2, "Error\nMap is missing\n", 22);
+	i = 0;
+	j = 0;
+	if (*to_find == 0)
 		return (0);
-	}
-	if (check_map(av) == 1)
+	while (str[i])
 	{
-		write(2, "Error\nCheck your map\n", 22);
-		return (0);
+		j = 0;
+		while (str[i + j] == to_find[j])
+		{
+			if (to_find[j + 1] == 0)
+				return (1);
+			j++;
+		}
+		i++;
 	}
-	init_global(&global, av);
-	display_assets(&global);
-	mlx_hook(global.win, 17, 0L, free_and_close, &global);
-	mlx_key_hook(global.win, move_character, &global);
-	mlx_loop(global.mlx);
+	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/05 14:36:01 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/23 17:17:06 by mverger          ###   ########.fr       */
+/*   Updated: 2022/02/26 15:08:37 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ void	ft_free_tab(char **tab);
 void	*ft_memallocexit(size_t size);
 long	ft_atol(const char *str);
 t_list	*ft_lstsecondlast(t_list *lst);
+int		ft_strstr(char *str, char *to_find);
 
 #endif
