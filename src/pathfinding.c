@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/20 19:08:41 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/23 16:45:32 by mverger          ###   ########.fr       */
+/*   Updated: 2022/03/26 20:19:53 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	pathfinding(t_global *global, int direction)
 			return (1);
 		else if (pathfinding_down(global) == 2)
 		{
-			ft_printf("%d", ++global->move_count);
+			ft_printf("%d\n", ++global->move_count);
 			free_and_close(global);
 		}
 	}

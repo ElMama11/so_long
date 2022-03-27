@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/12 16:29:23 by mverger           #+#    #+#             */
-/*   Updated: 2022/03/22 00:03:49 by mverger          ###   ########.fr       */
+/*   Updated: 2022/03/27 15:09:36 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,25 @@ int	check_wall(char **map)
 char	**get_map(char **av)
 {
 	int		map_fd;
-	char	buffer[5000];
+	char	buffer[2];
 	char	**map;
+	int		i;
+	char	*line;
 
 	map_fd = open(av[1], O_RDONLY);
-	if (map_fd == -1 || ft_strstr(av[1], ".ber") != 1)
+	check_open(map_fd, av);
+	i = read(map_fd, buffer, 1);
+	if (i <= 0)
+		return (map = NULL);
+	line = ft_memallocexit(100);
+	while (i > 0)
 	{
-		write(2, "Error: bad path or entry format\n", 32);
-		exit(0);
+		if (i != 0)
+			line = ft_strjoin_custom(line, buffer);
+		i = read(map_fd, buffer, 1);
 	}
-	read(map_fd, buffer, 1000);
-	map = ft_split(buffer, '\n');
-	map[ft_tablen(map) - 1][ft_strlen(map[0])] = '\0';
+	map = ft_split(line, '\n');
+	free(line);
 	close(map_fd);
 	return (map);
 }
@@ -111,12 +118,17 @@ int	check_map(char **av)
 
 	i = 0;
 	map = get_map(av);
+	if (map == NULL)
+	{
+		write(2, "Error: empty map\n", 17);
+		exit(EXIT_FAILURE);
+	}
 	if (check_wall(map) == 1)
-		return (1);
+		i = 1;
 	if (check_item_exit_start(map) == 1)
-		return (1);
+		i = 1;
 	if (check_map_shape(map) == 1)
-		return (1);
+		i = 1;
 	ft_free_tab(map);
-	return (0);
+	return (i);
 }

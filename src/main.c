@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/11 15:59:54 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/26 14:35:19 by mverger          ###   ########.fr       */
+/*   Updated: 2022/03/26 17:10:12 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	main(int ac, char **av)
 	if (ac != 2)
 	{
 		write(2, "Error\nMap is missing\n", 22);
-		return (0);
+		exit(EXIT_FAILURE);
 	}
 	if (check_map(av) == 1)
 	{
 		write(2, "Error\nCheck your map\n", 22);
-		return (0);
+		exit(EXIT_FAILURE);
 	}
 	init_global(&global, av);
 	display_assets(&global);

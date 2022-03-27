@@ -6,7 +6,7 @@
 /*   By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/09 14:44:49 by mverger           #+#    #+#             */
-/*   Updated: 2022/02/23 17:02:32 by mverger          ###   ########.fr       */
+/*   Updated: 2022/03/27 14:59:23 by mverger          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,8 @@ void	init_window(t_global *global);
 /* general_utils.c */
 void	count_chest(t_global *global);
 int		free_and_close(t_global *global);
+void	check_open(int map_fd, char **av);
+char	*ft_strjoin_custom(char *s1, char *s2);
 
 /* parsing.c */
 int		check_wall(char **map);
