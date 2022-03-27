@@ -6,7 +6,7 @@
 #    By: mverger <mverger@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/02/10 14:07:00 by mverger           #+#    #+#              #
-#    Updated: 2022/02/23 16:38:06 by mverger          ###   ########.fr        #
+#    Updated: 2022/03/26 19:45:45 by mverger          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ libft:
 $(PATHOBJ):
 	@mkdir -p $(PATHOBJ)
 
-$(NAME): $(PATHOBJ) $(addprefix $(PATHSRC)/,$(SRC)) $(OBJ)
+$(NAME): $(PATHOBJ) $(addprefix $(PATHSRC)/,$(SRC)) $(OBJ) $(LIBFT)
 	@$(ECHO) "\r$(GREEN) The .o from $(NAME) are compiled.$(DEFAULT)"
 	@$(GCCF) $(OBJ) $(LIBFT) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 	@$(ECHO) "$(GREEN)$(NAME)$(DEFAULT) created."
